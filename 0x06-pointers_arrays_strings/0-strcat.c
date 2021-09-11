@@ -1,22 +1,45 @@
 #include "holberton.h"
-/**
-* *_strncat - similar to strncat but copies the n bytes to dest
-* @src: source
-* @dest: destination
-* @n: bytes to copy from src to dest
-*
-* Return: destinaton with copied bytes.
-**/
-char *_strncat(char *dest, char *src, int n)
-{
-	int i, j;
 
-	for (i = 0; dest[i] != 00; i++)
+/**
+ * _strcat - concatenate two strings
+ * @dest: string to be appended to
+ * @src: string to append
+ * Return: concatenated string
+ */
+
+char *_strcat(char *dest, char *src)
+{
+	int i = 0;
+	int j = 0;
+
+	while (dest[i] != '\0')
+		i++;
+
+	while (src[j] != '\0')
 	{
+		dest[i] = src[j];
+		i++;
+		j++;
 	}
-	for (j = 0; j < n && src[j] != 00; j++)
-	{
-		dest[i + j] = src[j];
-	}
+	dest[i] = '\0';
+
 	return (dest);
 }
+
+/* another method using pointer notation
+char *_strcat(char *dest, char *src)
+{
+        int i = 0;
+	int j = 0;
+	while (*(dest + i))
+	   i++;
+	while (*(src + j))
+	{
+	   *(dest+i) = *(src+j);
+	   i++;
+	   j++;
+	}
+	*(dest+i) = '\0';
+	return (dest);
+}
+*/
